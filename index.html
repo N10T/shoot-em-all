@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Click'em all</title>
+    <link href="./style.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Wallpoet&display=swap"
+      rel="stylesheet"
+    />
+    <audio id="sniperSound">
+      <source src="./sound/effect/sniper shot.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="sirenSound">
+      <source src="./sound/effect/Siren_urgence_fin.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="gongSound">
+      <source src="./sound/effect/gong-daniel_simon.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div>Player 1</div>
+      <div>5 cibles</div>
+      <div id="chrono"><span id="sec">99</span><span id="milli">.99</span></div>
+      <div>2 cibles</div>
+      <div>Player 2</div>
+    </nav>
+    <!-- <script type="text/javascript">
+    const chrono = document.getElementById('chrono');
+
+
+// countdown
+
+var compteur = 99
+
+setInterval(function() {
+compteur --;
+chrono.textContent = compteur;
+}, 1000)
+</script> -->
+    <div class="horizontale">
+      <section id="player1" class="barre">
+        <div id="gauche1">chrono 1</div>
+        <div class="gauche 2">chrono 2</div>
+        <div class="gauche 3">chrono 3</div>
+        <div class="gauche 4">combo 4</div>
+        <div class="gauche 5">bonus 1</div>
+        <div class="gauche 6">farce</div>
+        <div class="gauche 7">???</div>
+      </section>
+      <section class="zone">
+        <div id="cell0" class="grille">0</div>
+        <div id="cell1" class="grille">1</div>
+        <div id="cell2" class="grille">2</div>
+        <div id="cell3" class="grille">3</div>
+        <div id="cell4" class="grille">4</div>
+        <div id="cell5" class="grille">5</div>
+        <div id="cell6" class="grille">6</div>
+        <div id="cell7" class="grille">7</div>
+        <div id="cell8" class="grille">8</div>
+        <div id="cell9" class="grille">9</div>
+        <div id="cell10" class="grille">10</div>
+        <div id="cell11" class="grille">11</div>
+        <div id="cell12" class="grille">12</div>
+        <div id="cell13" class="grille">13</div>
+        <div id="cell14" class="grille">14</div>
+        <div id="cell15" class="grille">15</div>
+        <div id="cell16" class="grille">16</div>
+        <div id="cell17" class="grille">17</div>
+        <div id="cell18" class="grille">18</div>
+        <div id="cell19" class="grille">19</div>
+        <div id="cell20" class="grille">20</div>
+        <div id="cell21" class="grille">21</div>
+        <div id="cell22" class="grille">22</div>
+        <div id="cell23" class="grille">23</div>
+        <div id="cell24" class="grille">24</div>
+        <div id="cell25" class="grille">25</div>
+        <div id="cell26" class="grille">26</div>
+        <div id="cell27" class="grille">27</div>
+        <div id="cell28" class="grille">28</div>
+        <div id="cell29" class="grille">29</div>
+        <div id="cell30" class="grille">30</div>
+        <div id="cell31" class="grille">31</div>
+        <div id="cell32" class="grille">32</div>
+        <div id="cell33" class="grille">33</div>
+        <div id="cell34" class="grille">34</div>
+        <div id="cell35" class="grille">35</div>
+        <div id="cell36" class="grille">36</div>
+        <div id="cell37" class="grille">37</div>
+        <div id="cell38" class="grille">38</div>
+        <div id="cell39" class="grille">39</div>
+        <div id="cell40" class="grille">40</div>
+        <div id="cell41" class="grille">41</div>
+        <div id="cell42" class="grille">42</div>
+        <div id="cell43" class="grille">43</div>
+        <div id="cell44" class="grille">44</div>
+        <div id="cell45" class="grille">45</div>
+        <div id="cell46" class="grille">46</div>
+        <div id="cell47" class="grille">47</div>
+        <div id="cell48" class="grille">48</div>
+        <div id="cell49" class="grille">49</div>
+        <div id="cell50" class="grille">50</div>
+        <div id="cell51" class="grille">51</div>
+        <div id="cell52" class="grille">52</div>
+        <div id="cell53" class="grille">53</div>
+        <div id="cell54" class="grille">54</div>
+        <div id="cell55" class="grille">55</div>
+        <div id="cell56" class="grille">56</div>
+        <div id="cell57" class="grille">57</div>
+        <div id="cell58" class="grille">58</div>
+        <div id="cell59" class="grille">59</div>
+        <div id="cell60" class="grille">60</div>
+        <div id="cell61" class="grille">61</div>
+        <div id="cell62" class="grille">62</div>
+        <div id="cell63" class="grille">63</div>
+        <div id="cell64" class="grille">64</div>
+        <div id="cell65" class="grille">65</div>
+        <div id="cell66" class="grille">66</div>
+        <div id="cell67" class="grille">67</div>
+        <div id="cell68" class="grille">68</div>
+        <div id="cell69" class="grille">69</div>
+        <div id="cell70" class="grille">70</div>
+        <div id="cell71" class="grille">71</div>
+        <div id="cell72" class="grille">72</div>
+        <div id="cell73" class="grille">73</div>
+        <div id="cell74" class="grille">74</div>
+        <div id="cell75" class="grille">75</div>
+        <div id="cell76" class="grille">76</div>
+        <div id="cell77" class="grille">77</div>
+        <div id="cell78" class="grille">78</div>
+        <div id="cell79" class="grille">79</div>
+        <div id="cell80" class="grille">80</div>
+        <div id="cell81" class="grille">81</div>
+        <div id="cell82" class="grille">82</div>
+        <div id="cell83" class="grille">83</div>
+        <div id="cell84" class="grille">84</div>
+        <div id="cell85" class="grille">85</div>
+        <div id="cell86" class="grille">86</div>
+        <div id="cell87" class="grille">87</div>
+        <div id="cell88" class="grille">88</div>
+        <div id="cell89" class="grille">89</div>
+        <div id="cell90" class="grille">90</div>
+        <div id="cell91" class="grille">91</div>
+        <div id="cell92" class="grille">92</div>
+        <div id="cell93" class="grille">93</div>
+        <div id="cell94" class="grille">94</div>
+        <div id="cell95" class="grille">95</div>
+        <div id="cell96" class="grille">96</div>
+        <div id="cell97" class="grille">97</div>
+        <div id="cell98" class="grille">98</div>
+        <div id="cell99" class="grille">99</div>
+        <div id="cell100" class="grille">100</div>
+        <div id="cell101" class="grille">101</div>
+        <div id="cell102" class="grille">102</div>
+        <div id="cell103" class="grille">103</div>
+        <div id="cell104" class="grille">104</div>
+        <div id="cell105" class="grille">105</div>
+        <div id="cell106" class="grille">106</div>
+        <div id="cell107" class="grille">107</div>
+        <div id="cell108" class="grille">108</div>
+        <div id="cell109" class="grille">109</div>
+        <div id="cell110" class="grille">110</div>
+        <div id="cell111" class="grille">111</div>
+        <div id="cell112" class="grille">112</div>
+        <div id="cell113" class="grille">113</div>
+        <div id="cell114" class="grille">114</div>
+        <div id="cell115" class="grille">115</div>
+        <div id="cell116" class="grille">116</div>
+        <div id="cell117" class="grille">117</div>
+        <div id="cell118" class="grille">118</div>
+        <div id="cell119" class="grille">119</div>
+        <div id="cell120" class="grille">120</div>
+        <div id="cell121" class="grille">121</div>
+        <div id="cell122" class="grille">122</div>
+        <div id="cell123" class="grille">123</div>
+        <div id="cell124" class="grille">124</div>
+        <div id="cell125" class="grille">125</div>
+        <div id="cell126" class="grille">126</div>
+        <div id="cell127" class="grille">127</div>
+        <div id="cell128" class="grille">128</div>
+        <div id="cell129" class="grille">129</div>
+        <div id="cell130" class="grille">130</div>
+        <div id="cell131" class="grille">131</div>
+        <div id="cell132" class="grille">132</div>
+        <div id="cell133" class="grille">133</div>
+        <div id="cell134" class="grille">134</div>
+        <div id="cell135" class="grille">135</div>
+        <div id="cell136" class="grille">136</div>
+        <div id="cell137" class="grille">137</div>
+        <div id="cell138" class="grille">138</div>
+        <div id="cell139" class="grille">139</div>
+        <div id="cell140" class="grille">140</div>
+        <div id="cell141" class="grille">141</div>
+        <div id="cell142" class="grille">142</div>
+        <div id="cell143" class="grille">143</div>
+        <div id="cell144" class="grille">144</div>
+        <div id="cell145" class="grille">145</div>
+        <div id="cell146" class="grille">146</div>
+        <div id="cell147" class="grille">147</div>
+        <div id="cell148" class="grille">148</div>
+        <div id="cell149" class="grille">149</div>
+        <div id="cell150" class="grille">150</div>
+        <div id="cell151" class="grille">151</div>
+        <div id="cell152" class="grille">152</div>
+        <div id="cell153" class="grille">153</div>
+        <div id="cell154" class="grille">154</div>
+        <div id="cell155" class="grille">155</div>
+        <div id="cell156" class="grille">156</div>
+        <div id="cell157" class="grille">157</div>
+        <div id="cell158" class="grille">158</div>
+        <div id="cell159" class="grille">159</div>
+        <div id="cell160" class="grille">160</div>
+        <div id="cell161" class="grille">161</div>
+        <div id="cell162" class="grille">162</div>
+        <div id="cell163" class="grille">163</div>
+        <div id="cell164" class="grille">164</div>
+        <div id="cell165" class="grille">165</div>
+        <div id="cell166" class="grille">166</div>
+        <div id="cell167" class="grille">167</div>
+        <div id="cell168" class="grille">168</div>
+        <div id="cell169" class="grille">169</div>
+        <div id="cell170" class="grille">170</div>
+        <div id="cell171" class="grille">171</div>
+        <div id="cell172" class="grille">172</div>
+        <div id="cell173" class="grille">173</div>
+        <div id="cell174" class="grille">174</div>
+        <div id="cell175" class="grille">175</div>
+        <div id="cell176" class="grille">176</div>
+        <div id="cell177" class="grille">177</div>
+        <div id="cell178" class="grille">178</div>
+        <div id="cell179" class="grille">179</div>
+        <div id="cell180" class="grille">180</div>
+        <div id="cell181" class="grille">181</div>
+        <div id="cell182" class="grille">182</div>
+        <div id="cell183" class="grille">183</div>
+        <div id="cell184" class="grille">184</div>
+        <div id="cell185" class="grille">185</div>
+        <div id="cell186" class="grille">186</div>
+        <div id="cell187" class="grille">187</div>
+        <div id="cell188" class="grille">188</div>
+        <div id="cell189" class="grille">189</div>
+        <div id="cell190" class="grille">190</div>
+        <div id="cell191" class="grille">191</div>
+        <div id="cell192" class="grille">192</div>
+        <div id="cell193" class="grille">193</div>
+        <div id="cell194" class="grille">194</div>
+        <div id="cell195" class="grille">195</div>
+        <div id="cell196" class="grille">196</div>
+        <div id="cell197" class="grille">197</div>
+        <div id="cell198" class="grille">198</div>
+        <div id="cell199" class="grille">199</div>
+        <div id="cell200" class="grille">200</div>
+        <div id="cell201" class="grille">201</div>
+        <div id="cell202" class="grille">202</div>
+        <div id="cell203" class="grille">203</div>
+        <div id="cell204" class="grille">204</div>
+        <div id="cell205" class="grille">205</div>
+        <div id="cell206" class="grille">206</div>
+        <div id="cell207" class="grille">207</div>
+        <div id="cell208" class="grille">208</div>
+        <div id="cell209" class="grille">209</div>
+        <div id="cell210" class="grille">210</div>
+        <div id="cell211" class="grille">211</div>
+        <div id="cell212" class="grille">212</div>
+        <div id="cell213" class="grille">213</div>
+        <div id="cell214" class="grille">214</div>
+        <div id="cell215" class="grille">215</div>
+        <div id="cell216" class="grille">216</div>
+        <div id="cell217" class="grille">217</div>
+        <div id="cell218" class="grille">218</div>
+        <div id="cell219" class="grille">219</div>
+        <div id="cell220" class="grille">220</div>
+        <div id="cell221" class="grille">221</div>
+        <div id="cell222" class="grille">222</div>
+        <div id="cell223" class="grille">223</div>
+        <div id="cell224" class="grille">224</div>
+        <div id="cell225" class="grille">225</div>
+        <div id="cell226" class="grille">226</div>
+        <div id="cell227" class="grille">227</div>
+        <div id="cell228" class="grille">228</div>
+        <div id="cell229" class="grille">229</div>
+        <div id="cell230" class="grille">230</div>
+        <div id="cell231" class="grille">231</div>
+        <div id="cell232" class="grille">232</div>
+        <div id="cell233" class="grille">233</div>
+        <div id="cell234" class="grille">234</div>
+        <div id="cell235" class="grille">235</div>
+        <div id="cell236" class="grille">236</div>
+        <div id="cell237" class="grille">237</div>
+        <div id="cell238" class="grille">238</div>
+        <div id="cell239" class="grille">239</div>
+        <div id="cell240" class="grille">240</div>
+        <div id="cell241" class="grille">241</div>
+        <div id="cell242" class="grille">242</div>
+        <div id="cell243" class="grille">243</div>
+        <div id="cell244" class="grille">244</div>
+        <div id="cell245" class="grille">245</div>
+        <div id="cell246" class="grille">246</div>
+        <div id="cell247" class="grille">247</div>
+        <div id="cell248" class="grille">248</div>
+        <div id="cell249" class="grille">249</div>
+        <div id="cell250" class="grille">250</div>
+        <div id="cell251" class="grille">251</div>
+        <div id="cell252" class="grille">252</div>
+        <div id="cell253" class="grille">253</div>
+        <div id="cell254" class="grille">254</div>
+        <div id="cell255" class="grille">255</div>
+        <div id="cell256" class="grille">256</div>
+        <div id="cell257" class="grille">257</div>
+        <div id="cell258" class="grille">258</div>
+        <div id="cell259" class="grille">259</div>
+        <div id="cell260" class="grille">260</div>
+        <div id="cell261" class="grille">261</div>
+        <div id="cell262" class="grille">262</div>
+        <div id="cell263" class="grille">263</div>
+        <div id="cell264" class="grille">264</div>
+        <div id="cell265" class="grille">265</div>
+        <div id="cell266" class="grille">266</div>
+        <div id="cell267" class="grille">267</div>
+        <div id="cell268" class="grille">268</div>
+        <div id="cell269" class="grille">269</div>
+        <div id="cell270" class="grille">270</div>
+        <div id="cell271" class="grille">271</div>
+        <div id="cell272" class="grille">272</div>
+        <div id="cell273" class="grille">273</div>
+        <div id="cell274" class="grille">274</div>
+        <div id="cell275" class="grille">275</div>
+        <div id="cell276" class="grille">276</div>
+        <div id="cell277" class="grille">277</div>
+        <div id="cell278" class="grille">278</div>
+        <div id="cell279" class="grille">279</div>
+        <div id="cell280" class="grille">280</div>
+        <div id="cell281" class="grille">281</div>
+        <div id="cell282" class="grille">282</div>
+        <div id="cell283" class="grille">283</div>
+        <div id="cell284" class="grille">284</div>
+        <div id="cell285" class="grille">285</div>
+        <div id="cell286" class="grille">286</div>
+        <div id="cell287" class="grille">287</div>
+        <div id="cell288" class="grille">288</div>
+        <div id="cell289" class="grille">289</div>
+        <div id="cell290" class="grille">290</div>
+        <div id="cell291" class="grille">291</div>
+        <div id="cell292" class="grille">292</div>
+        <div id="cell293" class="grille">293</div>
+        <div id="cell294" class="grille">294</div>
+        <div id="cell295" class="grille">295</div>
+        <div id="cell296" class="grille">296</div>
+        <div id="cell297" class="grille">297</div>
+        <div id="cell298" class="grille">298</div>
+        <div id="cell299" class="grille">299</div>
+        <!-- <div id="cell300" class="grille">300</div>
+<div id="cell301" class="grille">301</div>
+<div id="cell302" class="grille">302</div>
+<div id="cell303" class="grille">303</div>
+<div id="cell304" class="grille">304</div>
+<div id="cell305" class="grille">305</div>
+<div id="cell306" class="grille">306</div>
+<div id="cell307" class="grille">307</div>
+<div id="cell308" class="grille">308</div>
+<div id="cell309" class="grille">309</div>
+<div id="cell310" class="grille">310</div>
+<div id="cell311" class="grille">311</div>
+<div id="cell312" class="grille">312</div>
+<div id="cell313" class="grille">313</div>
+<div id="cell314" class="grille">314</div>
+<div id="cell315" class="grille">315</div>
+<div id="cell316" class="grille">316</div>
+<div id="cell317" class="grille">317</div>
+<div id="cell318" class="grille">318</div>
+<div id="cell319" class="grille">319</div>
+<div id="cell320" class="grille">320</div>
+<div id="cell321" class="grille">321</div>
+<div id="cell322" class="grille">322</div>
+<div id="cell323" class="grille">323</div>
+<div id="cell324" class="grille">324</div>
+<div id="cell325" class="grille">325</div>
+<div id="cell326" class="grille">326</div>
+<div id="cell327" class="grille">327</div>
+<div id="cell328" class="grille">328</div>
+<div id="cell329" class="grille">329</div>
+<div id="cell330" class="grille">330</div>
+<div id="cell331" class="grille">331</div>
+<div id="cell332" class="grille">332</div>
+<div id="cell333" class="grille">333</div>
+<div id="cell334" class="grille">334</div>
+<div id="cell335" class="grille">335</div>
+<div id="cell336" class="grille">336</div>
+<div id="cell337" class="grille">337</div>
+<div id="cell338" class="grille">338</div>
+<div id="cell339" class="grille">339</div>
+<div id="cell340" class="grille">340</div>
+<div id="cell341" class="grille">341</div>
+<div id="cell342" class="grille">342</div>
+<div id="cell343" class="grille">343</div>
+<div id="cell344" class="grille">344</div>
+<div id="cell345" class="grille">345</div>
+<div id="cell346" class="grille">346</div>
+<div id="cell347" class="grille">347</div>
+<div id="cell348" class="grille">348</div>
+<div id="cell349" class="grille">349</div>
+<div id="cell350" class="grille">350</div>
+<div id="cell351" class="grille">351</div>
+<div id="cell352" class="grille">352</div>
+<div id="cell353" class="grille">353</div>
+<div id="cell354" class="grille">354</div>
+<div id="cell355" class="grille">355</div>
+<div id="cell356" class="grille">356</div>
+<div id="cell357" class="grille">357</div>
+<div id="cell358" class="grille">358</div>
+<div id="cell359" class="grille">359</div>
+<div id="cell360" class="grille">360</div>
+<div id="cell361" class="grille">361</div>
+<div id="cell362" class="grille">362</div>
+<div id="cell363" class="grille">363</div>
+<div id="cell364" class="grille">364</div>
+<div id="cell365" class="grille">365</div>
+<div id="cell366" class="grille">366</div>
+<div id="cell367" class="grille">367</div>
+<div id="cell368" class="grille">368</div>
+<div id="cell369" class="grille">369</div>
+<div id="cell370" class="grille">370</div>
+<div id="cell371" class="grille">371</div>
+<div id="cell372" class="grille">372</div>
+<div id="cell373" class="grille">373</div>
+<div id="cell374" class="grille">374</div>
+<div id="cell375" class="grille">375</div>
+<div id="cell376" class="grille">376</div>
+<div id="cell377" class="grille">377</div>
+<div id="cell378" class="grille">378</div>
+<div id="cell379" class="grille">379</div>
+<div id="cell380" class="grille">380</div>
+<div id="cell381" class="grille">381</div>
+<div id="cell382" class="grille">382</div>
+<div id="cell383" class="grille">383</div>
+<div id="cell384" class="grille">384</div>
+<div id="cell385" class="grille">385</div>
+<div id="cell386" class="grille">386</div>
+<div id="cell387" class="grille">387</div>
+<div id="cell388" class="grille">388</div>
+<div id="cell389" class="grille">389</div>
+<div id="cell390" class="grille">390</div>
+<div id="cell391" class="grille">391</div>
+<div id="cell392" class="grille">392</div>
+<div id="cell393" class="grille">393</div>
+<div id="cell394" class="grille">394</div>
+<div id="cell395" class="grille">395</div>
+<div id="cell396" class="grille">396</div>
+<div id="cell397" class="grille">397</div>
+<div id="cell398" class="grille">398</div>
+<div id="cell399" class="grille">399</div>
+<div id="cell400" class="grille">400</div>
+<div id="cell401" class="grille">401</div>
+<div id="cell402" class="grille">402</div>
+<div id="cell403" class="grille">403</div>
+<div id="cell404" class="grille">404</div>
+<div id="cell405" class="grille">405</div>
+<div id="cell406" class="grille">406</div>
+<div id="cell407" class="grille">407</div>
+<div id="cell408" class="grille">408</div>
+<div id="cell409" class="grille">409</div>
+<div id="cell410" class="grille">410</div>
+<div id="cell411" class="grille">411</div>
+<div id="cell412" class="grille">412</div>
+<div id="cell413" class="grille">413</div>
+<div id="cell414" class="grille">414</div>
+<div id="cell415" class="grille">415</div>
+<div id="cell416" class="grille">416</div>
+<div id="cell417" class="grille">417</div>
+<div id="cell418" class="grille">418</div>
+<div id="cell419" class="grille">419</div>
+<div id="cell420" class="grille">420</div>
+<div id="cell421" class="grille">421</div>
+<div id="cell422" class="grille">422</div>
+<div id="cell423" class="grille">423</div>
+<div id="cell424" class="grille">424</div>
+<div id="cell425" class="grille">425</div>
+<div id="cell426" class="grille">426</div>
+<div id="cell427" class="grille">427</div>
+<div id="cell428" class="grille">428</div>
+<div id="cell429" class="grille">429</div>
+<div id="cell430" class="grille">430</div>
+<div id="cell431" class="grille">431</div>
+<div id="cell432" class="grille">432</div>
+<div id="cell433" class="grille">433</div>
+<div id="cell434" class="grille">434</div>
+<div id="cell435" class="grille">435</div>
+<div id="cell436" class="grille">436</div>
+<div id="cell437" class="grille">437</div>
+<div id="cell438" class="grille">438</div>
+<div id="cell439" class="grille">439</div>
+<div id="cell440" class="grille">440</div>
+<div id="cell441" class="grille">441</div>
+<div id="cell442" class="grille">442</div>
+<div id="cell443" class="grille">443</div>
+<div id="cell444" class="grille">444</div>
+<div id="cell445" class="grille">445</div>
+<div id="cell446" class="grille">446</div>
+<div id="cell447" class="grille">447</div>
+<div id="cell448" class="grille">448</div>
+<div id="cell449" class="grille">449</div>
+<div id="cell450" class="grille">450</div>
+<div id="cell451" class="grille">451</div>
+<div id="cell452" class="grille">452</div>
+<div id="cell453" class="grille">453</div>
+<div id="cell454" class="grille">454</div>
+<div id="cell455" class="grille">455</div>
+<div id="cell456" class="grille">456</div>
+<div id="cell457" class="grille">457</div>
+<div id="cell458" class="grille">458</div>
+<div id="cell459" class="grille">459</div>
+<div id="cell460" class="grille">460</div>
+<div id="cell461" class="grille">461</div>
+<div id="cell462" class="grille">462</div>
+<div id="cell463" class="grille">463</div>
+<div id="cell464" class="grille">464</div>
+<div id="cell465" class="grille">465</div>
+<div id="cell466" class="grille">466</div>
+<div id="cell467" class="grille">467</div>
+<div id="cell468" class="grille">468</div>
+<div id="cell469" class="grille">469</div>
+<div id="cell470" class="grille">470</div>
+<div id="cell471" class="grille">471</div>
+<div id="cell472" class="grille">472</div>
+<div id="cell473" class="grille">473</div>
+<div id="cell474" class="grille">474</div>
+<div id="cell475" class="grille">475</div>
+<div id="cell476" class="grille">476</div>
+<div id="cell477" class="grille">477</div>
+<div id="cell478" class="grille">478</div>
+<div id="cell479" class="grille">479</div>
+<div id="cell480" class="grille">480</div>
+<div id="cell481" class="grille">481</div>
+<div id="cell482" class="grille">482</div>
+<div id="cell483" class="grille">483</div>
+<div id="cell484" class="grille">484</div>
+<div id="cell485" class="grille">485</div>
+<div id="cell486" class="grille">486</div>
+<div id="cell487" class="grille">487</div>
+<div id="cell488" class="grille">488</div>
+<div id="cell489" class="grille">489</div>
+<div id="cell490" class="grille">490</div>
+<div id="cell491" class="grille">491</div>
+<div id="cell492" class="grille">492</div>
+<div id="cell493" class="grille">493</div>
+<div id="cell494" class="grille">494</div>
+<div id="cell495" class="grille">495</div>
+<div id="cell496" class="grille">496</div>
+<div id="cell497" class="grille">497</div>
+<div id="cell498" class="grille">498</div>
+<div id="cell499" class="grille">499</div>
+<div id="cell500" class="grille">500</div>
+<div id="cell501" class="grille">501</div>
+<div id="cell502" class="grille">502</div>
+<div id="cell503" class="grille">503</div>
+<div id="cell504" class="grille">504</div>
+<div id="cell505" class="grille">505</div>
+<div id="cell506" class="grille">506</div>
+<div id="cell507" class="grille">507</div>
+<div id="cell508" class="grille">508</div>
+<div id="cell509" class="grille">509</div>
+<div id="cell510" class="grille">510</div>
+<div id="cell511" class="grille">511</div>
+<div id="cell512" class="grille">512</div>
+<div id="cell513" class="grille">513</div>
+<div id="cell514" class="grille">514</div>
+<div id="cell515" class="grille">515</div>
+<div id="cell516" class="grille">516</div>
+<div id="cell517" class="grille">517</div>
+<div id="cell518" class="grille">518</div>
+<div id="cell519" class="grille">519</div>
+<div id="cell520" class="grille">520</div>
+<div id="cell521" class="grille">521</div>
+<div id="cell522" class="grille">522</div>
+<div id="cell523" class="grille">523</div>
+<div id="cell524" class="grille">524</div>
+<div id="cell525" class="grille">525</div>
+<div id="cell526" class="grille">526</div>
+<div id="cell527" class="grille">527</div>
+<div id="cell528" class="grille">528</div>
+<div id="cell529" class="grille">529</div>
+<div id="cell530" class="grille">530</div>
+<div id="cell531" class="grille">531</div>
+<div id="cell532" class="grille">532</div>
+<div id="cell533" class="grille">533</div>
+<div id="cell534" class="grille">534</div>
+<div id="cell535" class="grille">535</div>
+<div id="cell536" class="grille">536</div>
+<div id="cell537" class="grille">537</div>
+<div id="cell538" class="grille">538</div>
+<div id="cell539" class="grille">539</div>
+<div id="cell540" class="grille">540</div>
+<div id="cell541" class="grille">541</div>
+<div id="cell542" class="grille">542</div>
+<div id="cell543" class="grille">543</div>
+<div id="cell544" class="grille">544</div>
+<div id="cell545" class="grille">545</div>
+<div id="cell546" class="grille">546</div>
+<div id="cell547" class="grille">547</div>
+<div id="cell548" class="grille">548</div>
+<div id="cell549" class="grille">549</div>
+<div id="cell550" class="grille">550</div>
+<div id="cell551" class="grille">551</div>
+<div id="cell552" class="grille">552</div>
+<div id="cell553" class="grille">553</div>
+<div id="cell554" class="grille">554</div>
+<div id="cell555" class="grille">555</div>
+<div id="cell556" class="grille">556</div>
+<div id="cell557" class="grille">557</div>
+<div id="cell558" class="grille">558</div>
+<div id="cell559" class="grille">559</div>
+<div id="cell560" class="grille">560</div>
+<div id="cell561" class="grille">561</div>
+<div id="cell562" class="grille">562</div>
+<div id="cell563" class="grille">563</div>
+<div id="cell564" class="grille">564</div>
+<div id="cell565" class="grille">565</div>
+<div id="cell566" class="grille">566</div>
+<div id="cell567" class="grille">567</div>
+<div id="cell568" class="grille">568</div>
+<div id="cell569" class="grille">569</div>
+<div id="cell570" class="grille">570</div>
+<div id="cell571" class="grille">571</div>
+<div id="cell572" class="grille">572</div>
+<div id="cell573" class="grille">573</div>
+<div id="cell574" class="grille">574</div>
+<div id="cell575" class="grille">575</div>
+<div id="cell576" class="grille">576</div>
+<div id="cell577" class="grille">577</div>
+<div id="cell578" class="grille">578</div>
+<div id="cell579" class="grille">579</div>
+<div id="cell580" class="grille">580</div>
+<div id="cell581" class="grille">581</div>
+<div id="cell582" class="grille">582</div>
+<div id="cell583" class="grille">583</div>
+<div id="cell584" class="grille">584</div>
+<div id="cell585" class="grille">585</div>
+<div id="cell586" class="grille">586</div>
+<div id="cell587" class="grille">587</div>
+<div id="cell588" class="grille">588</div>
+<div id="cell589" class="grille">589</div>
+<div id="cell590" class="grille">590</div>
+<div id="cell591" class="grille">591</div>
+<div id="cell592" class="grille">592</div>
+<div id="cell593" class="grille">593</div>
+<div id="cell594" class="grille">594</div>
+<div id="cell595" class="grille">595</div>
+<div id="cell596" class="grille">596</div>
+<div id="cell597" class="grille">597</div>
+<div id="cell598" class="grille">598</div>
+<div id="cell599" class="grille">599</div>
+<div id="cell600" class="grille">600</div>
+<div id="cell601" class="grille">601</div>
+<div id="cell602" class="grille">602</div>
+<div id="cell603" class="grille">603</div>
+<div id="cell604" class="grille">604</div>
+<div id="cell605" class="grille">605</div>
+<div id="cell606" class="grille">606</div>
+<div id="cell607" class="grille">607</div>
+<div id="cell608" class="grille">608</div>
+<div id="cell609" class="grille">609</div>
+<div id="cell610" class="grille">610</div>
+<div id="cell611" class="grille">611</div>
+<div id="cell612" class="grille">612</div>
+<div id="cell613" class="grille">613</div>
+<div id="cell614" class="grille">614</div>
+<div id="cell615" class="grille">615</div>
+<div id="cell616" class="grille">616</div>
+<div id="cell617" class="grille">617</div>
+<div id="cell618" class="grille">618</div>
+<div id="cell619" class="grille">619</div>
+<div id="cell620" class="grille">620</div>
+<div id="cell621" class="grille">621</div>
+<div id="cell622" class="grille">622</div>
+<div id="cell623" class="grille">623</div>
+<div id="cell624" class="grille">624</div>
+<div id="cell625" class="grille">625</div>
+<div id="cell626" class="grille">626</div>
+<div id="cell627" class="grille">627</div>
+<div id="cell628" class="grille">628</div>
+<div id="cell629" class="grille">629</div>
+<div id="cell630" class="grille">630</div>
+<div id="cell631" class="grille">631</div>
+<div id="cell632" class="grille">632</div>
+<div id="cell633" class="grille">633</div>
+<div id="cell634" class="grille">634</div>
+<div id="cell635" class="grille">635</div>
+<div id="cell636" class="grille">636</div>
+<div id="cell637" class="grille">637</div>
+<div id="cell638" class="grille">638</div>
+<div id="cell639" class="grille">639</div>
+<div id="cell640" class="grille">640</div>
+<div id="cell641" class="grille">641</div>
+<div id="cell642" class="grille">642</div>
+<div id="cell643" class="grille">643</div>
+<div id="cell644" class="grille">644</div>
+<div id="cell645" class="grille">645</div>
+<div id="cell646" class="grille">646</div>
+<div id="cell647" class="grille">647</div>
+<div id="cell648" class="grille">648</div>
+<div id="cell649" class="grille">649</div>
+<div id="cell650" class="grille">650</div> -->
+      </section>
+      <section id="player2" class="barre">
+        <div>droite 1</div>
+        <div>droite 2</div>
+        <div>droite 3</div>
+        <div>droite 4</div>
+        <div>droite 5</div>
+        <div>droite 6</div>
+        <div>droite 7</div>
+      </section>
+    </div>
+    <script src="./Code.js"></script>
+  </body>
+</html>
