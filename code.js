@@ -1,16 +1,45 @@
 const chrono = document.getElementById("sec");
 const milli = document.getElementById("milli");
-var lastAim = "cell" + Math.floor(Math.random() * 288);
+const gauche = document.getElementsByClassName("gauche");
+const grille = document.getElementsByClassName("grille")
+const ciblePlayer1 = document.getElementById("ciblePlayer1")
+var lastAim = 0
+const chronoAim = [];
+var $ciblePlayer1 = 0
+
 var countdown = 0;
 var gong = 0;
+
+// Zone test
+
+function bestTime(arr) {
+  let bestTime = 100
+  for (let i = 0; i < arr.length-1; i++) {
+    if(bestTime > arr[i+1] - arr[i]) bestTime = arr[i+1] - arr[i]
+    
+  }return "best shot :" + (+bestTime.toFixed(2) < 10 ? " " : "") + (+bestTime.toFixed(2) < 1 ? bestTime.toFixed(2).substring(1)  :  bestTime.toFixed(2))
+}
+
 
 // SOUND
 const sniperSound = document.getElementById("sniperSound");
 const sirenSound = document.getElementById("sirenSound");
 const gongSound = document.getElementById("gongSound");
+function toSiren() {
+  // sirenSound.play();
+  countdown++;
+}
 
+function endGong() {
+  // gongSound.play();
+  gong++;
+}
+
+function toFire() {
+  // sniperSound.play();
+}
 // Chronometre
-var sec = 99;
+var sec = 60;
 var millisec = 99;
 
 setInterval(function() {
@@ -18,7 +47,7 @@ setInterval(function() {
     toSiren();
   }
 
-  while (sec === 0 && !gong) {
+  while (sec === 1 && !gong) {
     endGong();
   }
 
@@ -50,45 +79,41 @@ setInterval(function() {
 
 createAim();
 aimTouch();
+// function updateChrono(number) {}
 
 function createAim() {
-  let shuffleAim = "cell" + Math.floor(Math.random() * 288);
-  lastAim = shuffleAim;
-  document.getElementById(lastAim).classList.toggle("cible");
+  let shuffleAim = Math.floor(1+ Math.random() * 299);
+  lastAim = shuffleAim
+  grille[lastAim].classList.toggle("cible");
 }
 
 function deleteAim() {
-  document.getElementById(lastAim).classList.toggle("cible");
-  // supprimer le fait qu'il puisse recreer une cible
+  grille[lastAim].classList.toggle("cible");
 }
 
-function listenToTarge() {
+function listenToTarget() {
   toFire();
   deleteAim();
-  console.log(
-    lastAim,
-    "détruite à",
-    (99.99 - eval(sec + "." + millisec)).toFixed(2)
-  );
-  document.getElementById(lastAim).removeEventListener("click", listenToTarge);
+  chronoAim.push((99.99 - eval(sec + "." + millisec)).toFixed(2));
+  grille[lastAim].removeEventListener("click", listenToTarget);
+  gauche[0].textContent = chronoAim[chronoAim.length - 1];
+  toCountAim(1)
   createAim();
   aimTouch();
+
 }
 
 function aimTouch() {
-  document.getElementById(lastAim).addEventListener("click", listenToTarge);
+  grille[lastAim].addEventListener("click", listenToTarget);
+  if(chronoAim.length > 1) gauche[1].textContent = bestTime(chronoAim);
+}
+;
+
+function toCountAim(player) {
+  player === 1 ? $ciblePlayer1++ : $ciblePlayer2++
+  ciblePlayer1.textContent = $ciblePlayer1 + " cible" + ($ciblePlayer1 > 1 ? "s" : "")
+  // ciblePlayer2.textContent = $ciblePlayer2 + " cible" + ($ciblePlayer2 > 1 ? "s" : "")
+
 }
 
-function toSiren() {
-  sirenSound.play();
-  countdown++;
-}
 
-function endGong() {
-  gongSound.play();
-  gong++;
-}
-
-function toFire() {
-  sniperSound.play();
-}

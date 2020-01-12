@@ -1,13 +1,18 @@
 * {
-	margin: 0;
-	padding: 0;
+  	margin: 0;
+	  padding: 0;
     box-sizing: border-box;
     font-family: 'Wallpoet', cursive;
+  }
+
+body {
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 30%, rgba(0,212,255,1) 100%);
 }
 
 .horizontale{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin: 0 15px;
 }
 
 .barre {
@@ -23,19 +28,26 @@
     margin: 0px 17vw;
     align-items: flex-end;
     margin-top: 1vw;
-    justify-content: space-around;
+    justify-content: space-between;
     display: flex;
 }
 
+.navbar div:not(#chrono){
+  width: 10vw;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+.border {
+  border:0.5vw ridge rgb(70 203 24);
+  border-radius: 20px 20px 0px 0px;
+}
 #chrono {
     font-size: 4vw;
     color:#ef2d56    ;
-    border:2.5vw ridge rgb(70 203 24);
     border-bottom: none;
-    border-radius: 20px 20px 0px 0px;
     text-align: left;
     padding-left: 4vw;
-
     width: 30%;
 }
 
@@ -55,32 +67,33 @@
 }
 
 .zone {
-    border:2.5vw ridge rgb(70 203 24);
-    border-radius: 20px 20px 0px 0px;
-    height: 80%;
-    width: 80wv;
-    text-align: center;
-    display: grid;
-    line-height: 2.2vw;
-    font-size: 1vw;
-    grid-template-columns: repeat(25, 2.5vw);
-    grid-template-rows:  repeat(12, 2.5vw);
+  background-image: url("https://media.giphy.com/media/ardMfW1w53UvC/giphy.gif");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 80%;
+  text-align: center;
+  display: grid;
+  line-height: 2.2vw;
+  font-size: 1vw;
+  grid-template-columns: repeat(25, 2.5vw);
+  grid-template-rows:  repeat(12, 2.5vw);
+  cursor: crosshair;  
   }
 
   .grille {
     border: 1px dashed grey;
-    /* font-size: 0%;
-    border: none; */
+    font-size: 0%;
+    border: none;
   }
 
-  .grille:hover {
+  /* .grille:hover {
     background-image: url("https://www.shareicon.net/data/128x128/2016/07/15/796262_aim_512x512.png");
     background-position: 1.3px;
     background-size: 2.2vw;
     font-size: 0%;
     cursor: none;
     z-index: 10;
-  }
+  } */
 
   .cible:hover {
     background-image: url("./image/cible_viseur.png");
@@ -99,7 +112,26 @@
 
   }
 
-.active {
+  .gauche {
+    text-align: left;
+    font-size: 18px;
+  }
+  
+  .droite {
+    text-align: right;
+    font-size: 18px;
+  }
+
+  #player1 {
+width: 10vw;
+  }
+
+  #player2 {
+    width: 10vw;
+      }
+
+  }
+  .active {
       -webkit-animation: flip-horizontal-bck 0.2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
               animation: flip-horizontal-bck 0.2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
   }
