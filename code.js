@@ -1,119 +1,100 @@
-const chrono = document.getElementById("sec");
-const milli = document.getElementById("milli");
-const gauche = document.getElementsByClassName("gauche");
-const grille = document.getElementsByClassName("grille")
-const ciblePlayer1 = document.getElementById("ciblePlayer1")
-var lastAim = 0
-const chronoAim = [];
-var $ciblePlayer1 = 0
-
-var countdown = 0;
-var gong = 0;
-
-// Zone test
-
-function bestTime(arr) {
-  let bestTime = 100
-  for (let i = 0; i < arr.length-1; i++) {
-    if(bestTime > arr[i+1] - arr[i]) bestTime = arr[i+1] - arr[i]
-    
-  }return "best shot :" + (+bestTime.toFixed(2) < 10 ? " " : "") + (+bestTime.toFixed(2) < 1 ? bestTime.toFixed(2).substring(1)  :  bestTime.toFixed(2))
-}
-
-
-// SOUND
-const sniperSound = document.getElementById("sniperSound");
-const sirenSound = document.getElementById("sirenSound");
-const gongSound = document.getElementById("gongSound");
-function toSiren() {
-  // sirenSound.play();
-  countdown++;
-}
-
-function endGong() {
-  // gongSound.play();
-  gong++;
-}
-
-function toFire() {
-  // sniperSound.play();
-}
-// Chronometre
-var sec = 60;
-var millisec = 99;
-
-setInterval(function() {
-  while (sec === 10 && !countdown) {
-    toSiren();
+class Ennemies {
+  constructor(name, power, dom) {
+    this.name = name;
+    this.power = power;
+    this.dom = dom;
+    this.x = 0;
+    this.y = 0;
+    this.soundURL = "";
   }
+  attack = () =>
+    +score.textContent <= this.power
+      ? (score.textContent = "00")
+      : (score.textContent -= this.power);
+}
 
-  while (sec === 1 && !gong) {
-    endGong();
+const bomb = new Ennemies("Bob-ombs", 5, document.querySelector(".bomb"));
+
+const toad = document.getElementById("toad");
+const howto = document.getElementById("howto");
+var coins;
+const point = document.getElementById("points");
+var score = document.querySelector("#points>p");
+var grille = document.getElementsByClassName("grille");
+const grid = 275;
+var lastCoin = Math.floor(1 + Math.random() * grid);
+const coinSoundURL =
+  "https://freesound.org/data/previews/341/341695_5858296-lq.mp3";
+const soundTrackMarioURL =
+  "http://23.237.126.42/ost/super-mario-bros.-3/rifwvpjl/01%20-%20Grass%20Land.mp3";
+doItXtimes(createACoin, 5);
+coins.forEach(a => a.addEventListener("click", coinClicked));
+var foo = new Audio(soundTrackMarioURL);
+howto.onclick = () => {
+  foo.paused ? foo.play() : foo.pause();
+};
+
+function mouseOverBomb() {
+  bomb.attack();
+  bomb.dom.classList.remove("bomb");
+  bomb.dom.classList.add("bomb-explose");
+  setTimeout(stopWalking, 1000);
+  playSound(
+    "http://www.mariomayhem.com/downloads/sounds/mario_64_sound_effects/mario-woo.WAV"
+  );
+}
+
+bomb.dom.addEventListener("mouseover", mouseOverBomb);
+point.onclick = () => foo.pause();
+const doItWalk = setInterval(bombWalk, 70);
+
+function stopWalking() {
+  bomb.dom.removeEventListener("mouseover", mouseOverBomb);
+  clearInterval(doItWalk);
+  bomb.dom.classList.remove("bomb-explose");
+  coins = document.querySelectorAll(".coin:not(.flex)");
+  coins.forEach(a => a.classList.remove("coin"));
+  doItXtimes(createACoin, coins.length);
+  coins.forEach(a => a.addEventListener("click", coinClicked));
+}
+function bombWalk() {
+  bomb.x += 10;
+  bomb.dom.style.transform = `translateX(${-bomb.x}px)`;
+  console.log(window.innerWidth, bomb.x);
+  if (bomb.x > window.innerWidth + 100) {
+    bomb.x = -200;
   }
-
-  //Chrono secondes
-  if (sec > 0) {
-    sec--;
-    chrono.textContent = sec;
-  } else {
-    chrono.textContent = sec;
-  }
-}, 1000);
-
-setInterval(function() {
-  //Chrono millièmes
-  if (sec === 0) {
-    millisec = "00";
-    milli.textContent = "." + millisec;
-  } else {
-    if (millisec > 0) {
-      millisec--;
-      milli.textContent = "." + millisec;
-    } else {
-      millisec = 99;
-    }
-  }
-}, 10);
-
-// Cibles
-
-createAim();
-aimTouch();
-// function updateChrono(number) {}
-
-function createAim() {
-  let shuffleAim = Math.floor(1+ Math.random() * 299);
-  lastAim = shuffleAim
-  grille[lastAim].classList.toggle("cible");
 }
 
-function deleteAim() {
-  grille[lastAim].classList.toggle("cible");
+function coinClicked(e) {
+  playSound(coinSoundURL);
+  e.target.classList.toggle("coin");
+  e.target.removeEventListener("click", coinClicked);
+  score.textContent = twoDigits(+score.textContent + 1);
+  if (!(+score.textContent % 10))
+    playSound(
+      "http://www.mariomayhem.com/downloads/sounds/mario_64_sound_effects/mario-woohoo.WAV"
+    );
+  createACoin();
+  coins = document.querySelectorAll(".coin:not(.flex)");
+  coins.forEach(a => a.addEventListener("click", coinClicked));
 }
 
-function listenToTarget() {
-  toFire();
-  deleteAim();
-  chronoAim.push((99.99 - eval(sec + "." + millisec)).toFixed(2));
-  grille[lastAim].removeEventListener("click", listenToTarget);
-  gauche[0].textContent = chronoAim[chronoAim.length - 1];
-  toCountAim(1)
-  createAim();
-  aimTouch();
+const twoDigits = n => (("" + n).length === 1 ? "0" + n : n);
 
+function playSound(url) {
+  new Audio(url).play();
 }
 
-function aimTouch() {
-  grille[lastAim].addEventListener("click", listenToTarget);
-  if(chronoAim.length > 1) gauche[1].textContent = bestTime(chronoAim);
-}
-;
-
-function toCountAim(player) {
-  player === 1 ? $ciblePlayer1++ : $ciblePlayer2++
-  ciblePlayer1.textContent = $ciblePlayer1 + " cible" + ($ciblePlayer1 > 1 ? "s" : "")
-  // ciblePlayer2.textContent = $ciblePlayer2 + " cible" + ($ciblePlayer2 > 1 ? "s" : "")
-
+function createACoin() {
+  lastCoin = Math.floor(1 + Math.random() * grid);
+  [...grille[lastCoin].classList].includes("coin") ||
+  [...grille[lastCoin].classList].includes("bomb")
+    ? createACoin()
+    : grille[lastCoin].classList.toggle("coin");
+  coins = document.querySelectorAll(".coin:not(.flex)");
 }
 
-
+function doItXtimes(f, times) {
+  [...Array(times)].forEach(a => f());
+}
